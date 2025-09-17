@@ -1,101 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Quiz Code Submission</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f2f2f2; }
-    h2 { color: #333; }
-    .container { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
-    input, textarea, button { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
-    button { background: teal; color: white; cursor: pointer; }
-    button:hover { background: darkcyan; }
-    .hidden { display: none; }
-  </style>
-</head>
-<body>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <title>Quiz Submission</title>
+    <style>
+      body{font-family:Arial; padding:20px; background:#f7f7f7}
+      .card{max-width:500px;margin:auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+      input, textarea, button{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px}
+      button{background:teal;color:#fff;border:none;cursor:pointer}
+      .muted{font-size:0.85rem;color:#666}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Quiz Submission</h2>
+      <label>Student Name</label>
+      <input id="name" type="text">
+      <label>Quiz Code</label>
+      <input id="code" type="text">
+      <label>Message (optional)</label>
+      <textarea id="msg" rows="4"></textarea>
+      <button onclick="submitForm()">Submit</button>
+      <p id="status" class="muted"></p>
+      <hr>
+      <p class="muted">Teacher? <a href="?page=teacher" target="_blank">Open teacher page</a></p>
+    </div>
 
-<div class="container" id="studentForm">
-  <h2>Quiz Submission</h2>
-  <label>Student Name:</label>
-  <input type="text" id="name" required>
-  
-  <label>Quiz Code:</label>
-  <input type="text" id="code" required>
-  
-  <label>Message:</label>
-  <textarea id="msg"></textarea>
-  
-  <button onclick="submitQuiz()">Submit</button>
-  <p id="confirmation" style="color:green;"></p>
-</div>
+    <script>
+      function submitForm(){
+        const name = document.getElementById('name').value.trim();
+        const code = document.getElementById('code').value.trim();
+        const msg = document.getElementById('msg').value.trim();
+        const statusEl = document.getElementById('status');
 
-<div class="container hidden" id="teacherLogin">
-  <h2>Teacher Login</h2>
-  <label>Password:</label>
-  <input type="password" id="password">
-  <button onclick="checkPassword()">Login</button>
-</div>
-
-<div class="container hidden" id="teacherPage">
-  <h2>Student Submissions</h2>
-  <div id="submissions"></div>
-  <button onclick="logout()">Logout</button>
-</div>
-
-<script>
-  const PASSWORD = "secret123"; // change password here
-
-  function submitQuiz() {
-    let name = document.getElementById("name").value;
-    let code = document.getElementById("code").value;
-    let msg = document.getElementById("msg").value;
-    
-    if(name === "" || code === "") {
-      alert("Name and Code are required!");
-      return;
-    }
-
-    let submissions = JSON.parse(localStorage.getItem("quizSubmissions")) || [];
-    submissions.push({name, code, msg, time: new Date().toLocaleString()});
-    localStorage.setItem("quizSubmissions", JSON.stringify(submissions));
-
-    document.getElementById("confirmation").innerText = "✅ Submitted successfully!";
-    document.getElementById("name").value = "";
-    document.getElementById("code").value = "";
-    document.getElementById("msg").value = "";
-  }
-
-  function checkPassword() {
-    let pass = document.getElementById("password").value;
-    if(pass === PASSWORD) {
-      document.getElementById("teacherLogin").classList.add("hidden");
-      document.getElementById("teacherPage").classList.remove("hidden");
-      showSubmissions();
-    } else {
-      alert("Wrong password!");
-    }
-  }
-
-  function showSubmissions() {
-    let submissions = JSON.parse(localStorage.getItem("quizSubmissions")) || [];
-    let html = "";
-    submissions.forEach((s, i) => {
-      html += `<p><b>${i+1}. ${s.name}</b> (Code: ${s.code})<br>Message: ${s.msg}<br><small>${s.time}</small></p><hr>`;
-    });
-    document.getElementById("submissions").innerHTML = html || "No submissions yet.";
-  }
-
-  function logout() {
-    document.getElementById("teacherPage").classList.add("hidden");
-    document.getElementById("teacherLogin").classList.remove("hidden");
-  }
-
-  // show teacher login option
-  window.onload = function() {
-    document.getElementById("teacherLogin").classList.remove("hidden");
-  }
-</script>
-
-</body>
+        if(!name || !code){
+          alert('Name and Code required');
+          return;
+        }
+        statusEl.textContent = 'Submitting...';
+        google.script.run.withSuccessHandler(function(res){
+          if(res.status === 'OK'){
+            statusEl.textContent = 'Submitted — thanks!';
+            document.getElementById('name').value = '';
+            document.getElementById('code').value = '';
+            document.getElementById('msg').value = '';
+          } else {
+            statusEl.textContent = 'Error: ' + (res.message || 'unknown');
+          }
+        }).submitData({name:name, code:code, msg:msg});
+      }
+    </script>
+  </body>
 </html>
+
