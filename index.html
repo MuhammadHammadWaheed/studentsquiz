@@ -1,37 +1,307 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Student Messages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-Teacher Message System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .message {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .message h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .message p {
+            margin-bottom: 0;
+        }
+        
+        .logout-btn {
+            background-color: #e74c3c;
+            max-width: 150px;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .logout-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .notification {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<h1>Submit Message</h1>
-<form id="studentForm">
-<input id="studentName" placeholder="Name" required>
-<textarea id="studentMessage" placeholder="Message" required></textarea>
-<button type="submit">Submit</button>
-</form>
+    <div class="container">
+        <!-- Student Submission Form -->
+        <div id="student-view">
+            <h1>Student Message Submission</h1>
+            <div id="student-notification" class="notification hidden"></div>
+            <form id="message-form">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit">Submit Message</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">
+                Teacher? <a href="#" id="teacher-login-link">Login here</a>
+            </p>
+        </div>
+        
+        <!-- Teacher Login and Message View -->
+        <div id="teacher-view" class="hidden">
+            <h1>Teacher Message Dashboard</h1>
+            <div id="teacher-notification" class="notification hidden"></div>
+            
+            <div id="login-section">
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            
+            <div id="messages-section" class="hidden">
+                <h2>Student Messages</h2>
+                <div id="messages-container"></div>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </div>
 
-
-<script>
-const API_BASE = 'http://localhost:3000';
-
-
-document.getElementById('studentForm').addEventListener('submit', async (e) => {
-e.preventDefault();
-const name = document.getElementById('studentName').value.trim();
-const msg = document.getElementById('studentMessage').value.trim();
-if(!name || !msg) return alert('Fill all fields');
-
-
-await fetch(API_BASE + '/api/messages', {
-method: 'POST',
-headers: {'Content-Type':'application/json'},
-body: JSON.stringify({name, msg, t: Date.now()})
-});
-alert('Message submitted!');
-e.target.reset();
-});
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const studentView = document.getElementById('student-view');
+            const teacherView = document.getElementById('teacher-view');
+            const loginSection = document.getElementById('login-section');
+            const messagesSection = document.getElementById('messages-section');
+            const messageForm = document.getElementById('message-form');
+            const loginForm = document.getElementById('login-form');
+            const messagesContainer = document.getElementById('messages-container');
+            const studentNotification = document.getElementById('student-notification');
+            const teacherNotification = document.getElementById('teacher-notification');
+            const teacherLoginLink = document.getElementById('teacher-login-link');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            // Teacher password (in a real app, this would be stored securely on a server)
+            const TEACHER_PASSWORD = "teacher123";
+            
+            // Switch to teacher view
+            teacherLoginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                studentView.classList.add('hidden');
+                teacherView.classList.remove('hidden');
+            });
+            
+            // Handle student message submission
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                if (name && message) {
+                    // Save message to localStorage
+                    saveMessage(name, message);
+                    
+                    // Show success message
+                    showNotification(studentNotification, "Message submitted successfully!", "success");
+                    
+                    // Clear form
+                    messageForm.reset();
+                } else {
+                    showNotification(studentNotification, "Please fill in all fields", "error");
+                }
+            });
+            
+            // Handle teacher login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const password = document.getElementById('password').value;
+                
+                if (password === TEACHER_PASSWORD) {
+                    // Successful login
+                    loginSection.classList.add('hidden');
+                    messagesSection.classList.remove('hidden');
+                    loadMessages();
+                } else {
+                    showNotification(teacherNotification, "Incorrect password", "error");
+                }
+            });
+            
+            // Handle logout
+            logoutBtn.addEventListener('click', function() {
+                loginSection.classList.remove('hidden');
+                messagesSection.classList.add('hidden');
+                loginForm.reset();
+                teacherView.classList.add('hidden');
+                studentView.classList.remove('hidden');
+            });
+            
+            // Save message to localStorage
+            function saveMessage(name, message) {
+                let messages = JSON.parse(localStorage.getItem('studentMessages')) || [];
+                messages.push({
+                    name: name,
+                    message: message,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('studentMessages', JSON.stringify(messages));
+            }
+            
+            // Load messages from localStorage
+            function loadMessages() {
+                const messages = JSON.parse(localStorage.getItem('studentMessages')) || [];
+                messagesContainer.innerHTML = '';
+                
+                if (messages.length === 0) {
+                    messagesContainer.innerHTML = '<p>No messages yet.</p>';
+                    return;
+                }
+                
+                // Sort messages by timestamp (newest first)
+                messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                // Display messages
+                messages.forEach(msg => {
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'message';
+                    messageElement.innerHTML = `
+                        <h3>${escapeHTML(msg.name)}</h3>
+                        <p>${escapeHTML(msg.message)}</p>
+                        <small>${new Date(msg.timestamp).toLocaleString()}</small>
+                    `;
+                    messagesContainer.appendChild(messageElement);
+                });
+            }
+            
+            // Show notification
+            function showNotification(container, message, type) {
+                container.textContent = message;
+                container.className = `notification ${type}`;
+                container.classList.remove('hidden');
+                
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    container.classList.add('hidden');
+                }, 3000);
+            }
+            
+            // Basic HTML escaping to prevent XSS
+            function escapeHTML(str) {
+                return str
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        });
+    </script>
 </body>
 </html>
