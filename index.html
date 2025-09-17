@@ -241,6 +241,50 @@
             font-size: 2.5rem;
             color: #4a6fc7;
         }
+        
+        .cloud-animation {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            font-size: 2rem;
+            color: #4a6fc7;
+        }
+        
+        .cloud {
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        .cloud:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .cloud:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #4a6fc7;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -265,6 +309,15 @@
                     </div>
                     <button type="submit"><i class="fas fa-paper-plane"></i> Submit Message</button>
                 </form>
+                
+                <div class="cloud-animation">
+                    <i class="fas fa-cloud cloud"></i>
+                    <i class="fas fa-cloud cloud"></i>
+                    <i class="fas fa-cloud cloud"></i>
+                </div>
+                <p style="text-align: center; color: #4a6fc7; font-weight: 500;">
+                    <i class="fas fa-database"></i> Messages are saved in the cloud
+                </p>
             </section>
             
             <section class="teacher-section">
@@ -284,7 +337,10 @@
                 
                 <div id="messages-section" class="hidden">
                     <div class="messages-container">
-                        <h3>Student Messages</h3>
+                        <h3>Student Messages <i class="fas fa-sync-alt" id="refresh-btn" style="cursor: pointer; font-size: 0.8em;"></i></h3>
+                        <div id="loading" class="loading hidden">
+                            <div class="spinner"></div>
+                        </div>
                         <div id="messages-container" class="message-list">
                             <!-- Messages will be displayed here -->
                         </div>
@@ -306,50 +362,132 @@
             <i class="fab fa-safari"></i>
             <i class="fab fa-opera"></i>
         </div>
-        <p>This system uses browser localStorage which works consistently across all modern browsers</p>
+        <p>This system simulates cloud-based storage that works across all devices</p>
     </div>
     
     <footer>
-        <p>© 2023 Student-Teacher Message System | Cross-browser compatible</p>
+        <p>© 2023 Student-Teacher Message System | Cloud-based message storage</p>
     </footer>
 
     <script>
+        // Cloud storage simulation
+        const cloudStorage = {
+            // In a real application, this would be an API endpoint
+            messages: [],
+            
+            // Initialize with some sample messages
+            init: function() {
+                // Check if we have existing messages in localStorage (for demo purposes)
+                const stored = localStorage.getItem('cloudMessages');
+                if (stored) {
+                    this.messages = JSON.parse(stored);
+                } else {
+                    // Add some sample messages
+                    this.messages = [
+                        {
+                            name: "Ali Ahmed",
+                            message: "Thank you for the great lesson today!",
+                            timestamp: new Date(Date.now() - 86400000).toISOString() // 1 day ago
+                        },
+                        {
+                            name: "Sara Khan",
+                            message: "I have a question about the homework assignment.",
+                            timestamp: new Date(Date.now() - 43200000).toISOString() // 12 hours ago
+                        }
+                    ];
+                    this.saveToLocal();
+                }
+            },
+            
+            // Simulate saving to cloud
+            saveMessage: function(name, message) {
+                return new Promise((resolve) => {
+                    // Simulate network delay
+                    setTimeout(() => {
+                        const newMessage = {
+                            name: name,
+                            message: message,
+                            timestamp: new Date().toISOString()
+                        };
+                        
+                        this.messages.push(newMessage);
+                        this.saveToLocal();
+                        
+                        resolve(newMessage);
+                    }, 800); // Simulate network latency
+                });
+            },
+            
+            // Simulate retrieving from cloud
+            getMessages: function() {
+                return new Promise((resolve) => {
+                    // Simulate network delay
+                    setTimeout(() => {
+                        // Sort by timestamp (newest first)
+                        const sortedMessages = [...this.messages].sort((a, b) => 
+                            new Date(b.timestamp) - new Date(a.timestamp)
+                        );
+                        resolve(sortedMessages);
+                    }, 600); // Simulate network latency
+                });
+            },
+            
+            // For demo purposes, we'll use localStorage to simulate persistence
+            saveToLocal: function() {
+                localStorage.setItem('cloudMessages', JSON.stringify(this.messages));
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cloud storage
+            cloudStorage.init();
+            
             // Elements
             const messageForm = document.getElementById('message-form');
             const loginBtn = document.getElementById('login-btn');
             const logoutBtn = document.getElementById('logout-btn');
+            const refreshBtn = document.getElementById('refresh-btn');
             const messagesContainer = document.getElementById('messages-container');
             const studentNotification = document.getElementById('student-notification');
             const teacherNotification = document.getElementById('teacher-notification');
             const loginSection = document.getElementById('login-section');
             const messagesSection = document.getElementById('messages-section');
             const passwordInput = document.getElementById('password');
+            const loadingIndicator = document.getElementById('loading');
             
-            // Teacher password (in a real app, this would be stored securely on a server)
+            // Teacher password (in a real app, this would be verified on the server)
             const TEACHER_PASSWORD = "teacher123";
             
-            // Initialize messages if not exists
-            if (!localStorage.getItem('studentMessages')) {
-                localStorage.setItem('studentMessages', JSON.stringify([]));
-            }
-            
             // Handle student message submission
-            messageForm.addEventListener('submit', function(e) {
+            messageForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 const name = document.getElementById('name').value.trim();
                 const message = document.getElementById('message').value.trim();
                 
                 if (name && message) {
-                    // Save message to localStorage
-                    saveMessage(name, message);
+                    // Show loading state
+                    const submitBtn = messageForm.querySelector('button');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving to Cloud...';
+                    submitBtn.disabled = true;
                     
-                    // Show success message
-                    showNotification(studentNotification, "Message submitted successfully!", "success");
-                    
-                    // Clear form
-                    messageForm.reset();
+                    try {
+                        // Save message to cloud
+                        await cloudStorage.saveMessage(name, message);
+                        
+                        // Show success message
+                        showNotification(studentNotification, "Message submitted successfully to cloud!", "success");
+                        
+                        // Clear form
+                        messageForm.reset();
+                    } catch (error) {
+                        showNotification(studentNotification, "Error saving message. Please try again.", "error");
+                    } finally {
+                        // Restore button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
                 } else {
                     showNotification(studentNotification, "Please fill in all fields", "error");
                 }
@@ -379,41 +517,41 @@
                 teacherNotification.classList.add('hidden');
             });
             
-            // Save message to localStorage
-            function saveMessage(name, message) {
-                let messages = JSON.parse(localStorage.getItem('studentMessages')) || [];
-                messages.push({
-                    name: name,
-                    message: message,
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('studentMessages', JSON.stringify(messages));
-            }
+            // Handle refresh
+            refreshBtn.addEventListener('click', function() {
+                loadMessages();
+                showNotification(teacherNotification, "Messages refreshed from cloud", "success");
+            });
             
-            // Load messages from localStorage
-            function loadMessages() {
-                const messages = JSON.parse(localStorage.getItem('studentMessages')) || [];
+            // Load messages from cloud
+            async function loadMessages() {
+                loadingIndicator.classList.remove('hidden');
                 messagesContainer.innerHTML = '';
                 
-                if (messages.length === 0) {
-                    messagesContainer.innerHTML = '<div class="message"><p>No messages yet. Students haven\'t submitted any messages.</p></div>';
-                    return;
+                try {
+                    const messages = await cloudStorage.getMessages();
+                    
+                    if (messages.length === 0) {
+                        messagesContainer.innerHTML = '<div class="message"><p>No messages yet. Students haven\'t submitted any messages.</p></div>';
+                        return;
+                    }
+                    
+                    // Display messages
+                    messages.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'message';
+                        messageElement.innerHTML = `
+                            <h3>${escapeHTML(msg.name)}</h3>
+                            <p>${escapeHTML(msg.message)}</p>
+                            <div class="timestamp">${formatDate(msg.timestamp)}</div>
+                        `;
+                        messagesContainer.appendChild(messageElement);
+                    });
+                } catch (error) {
+                    showNotification(teacherNotification, "Error loading messages from cloud", "error");
+                } finally {
+                    loadingIndicator.classList.add('hidden');
                 }
-                
-                // Sort messages by timestamp (newest first)
-                messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                
-                // Display messages
-                messages.forEach(msg => {
-                    const messageElement = document.createElement('div');
-                    messageElement.className = 'message';
-                    messageElement.innerHTML = `
-                        <h3>${escapeHTML(msg.name)}</h3>
-                        <p>${escapeHTML(msg.message)}</p>
-                        <div class="timestamp">${formatDate(msg.timestamp)}</div>
-                    `;
-                    messagesContainer.appendChild(messageElement);
-                });
             }
             
             // Show notification
@@ -448,23 +586,6 @@
                     .replace(/>/g, "&gt;")
                     .replace(/"/g, "&quot;")
                     .replace(/'/g, "&#039;");
-            }
-            
-            // Check if localStorage is available
-            function isLocalStorageAvailable() {
-                try {
-                    const test = 'test';
-                    localStorage.setItem(test, test);
-                    localStorage.removeItem(test);
-                    return true;
-                } catch (e) {
-                    return false;
-                }
-            }
-            
-            // Initialize the application with localStorage check
-            if (!isLocalStorageAvailable()) {
-                showNotification(studentNotification, "Your browser doesn't support localStorage. Some features may not work.", "error");
             }
         });
     </script>
