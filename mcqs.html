@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs Practice - Royal Mathematics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mcqs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Royal <span>Mathematics</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="matric.html">Matric</a></li>
+                    <li><a href="fsc.html">Fsc</a></li>
+                    <li><a href="bs-math.html">BS Mathematics</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="mcqs.html" class="active">MCQs Practice</a></li>
+                    <li><a href="teacher-profile.html">Teacher Profiles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MCQs Hero Section -->
+    <section class="mcqs-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mathematics MCQs Practice</h1>
+                <p>Test your knowledge with our interactive multiple choice questions. Get instant feedback and detailed explanations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MCQs Main Content -->
+    <section class="mcqs-content">
+        <div class="container">
+            <div class="mcqs-controls">
+                <div class="level-selector">
+                    <label for="level">Select Level:</label>
+                    <select id="level">
+                        <option value="matric">Matric (9th-10th)</option>
+                        <option value="fsc">FSc (11th-12th)</option>
+                        <option value="bs">BS Mathematics</option>
+                    </select>
+                </div>
+                
+                <div class="topic-selector">
+                    <label for="topic">Select Topic:</label>
+                    <select id="topic">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <button id="startQuiz" class="btn">Start Quiz</button>
+            </div>
+            
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-intro">
+                    <h2>Welcome to MCQs Practice</h2>
+                    <p>Select your level and topic above to begin practicing multiple choice questions. You'll receive immediate feedback and explanations for each answer.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Instant scoring</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-book-open"></i>
+                            <p>Detailed explanations</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Progress tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="currentQuestion">0</span> of <span id="totalQuestions">0</span> questions
+                </div>
+                <div class="score" id="scoreDisplay">
+                    Score: <span>0</span>%
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- Footer content same as other pages -->
+        </div>
+    </footer>
+
+    <script src="js/mcqs.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

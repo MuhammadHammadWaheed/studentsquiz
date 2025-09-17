@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matric Mathematics - Royal Mathematics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/matric.css">
+</head>
+<body>
+    <!-- Header (same as other pages) -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Royal <span>Mathematics</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="matric.html" class="active">Matric</a></li>
+                    <li><a href="fsc.html">Fsc</a></li>
+                    <li><a href="bs-math.html">BS Mathematics</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="articles.html">Article</a></li>
+                    <li><a href="teacher-profile.html">Teacher Profiles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Matric Hero Section -->
+    <section class="matric-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Matric Mathematics Resources</h1>
+                <p>Comprehensive learning materials, solved exercises, and practice problems for Matric (9th & 10th grade) students</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="matric-content">
+        <div class="container">
+            <div class="matric-grid">
+                <!-- Books Section -->
+                <div class="matric-section">
+                    <h2><i class="fas fa-book"></i> Textbooks</h2>
+                    <div class="books-grid">
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 9th Punjab Board.jpg" alt="Mathematics 9th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 9th</h3>
+                                <p>Punjab Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 9th Punjab Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+                        
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 10th Punjab Board.jpg" alt="Mathematics 10th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 10th</h3>
+                                <p>Punjab Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 10th Punjab Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 9th Federal Board.jpg" alt="Mathematics 9th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 9th</h3>
+                                <p>Federal Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 9th Federal Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+                        
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 10th Federal Board.jpg" alt="Mathematics 10th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 10th</h3>
+                                <p>Federal Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 10th Federal Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 9th KPK Board.jpg" alt="Mathematics 9th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 9th</h3>
+                                <p>KPK Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 9th KPK Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+                        
+                        <div class="book-card">
+                            <div class="book-cover">
+                                <img src="matric/image/math 10th KPK Board.jpg" alt="Mathematics 10th Class">
+                            </div>
+                            <div class="book-info">
+                                <h3>Mathematics for Class 10th</h3>
+                                <p>KPK Textbook Board</p>
+                                <div>
+                                 <a href="matric/math 10th KPK Board.pdf" target="_blank">
+                                    <button class="btn" >View / Download</button>
+                                </a>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solutions Section -->
+                <div class="matric-section">
+                    <h2><i class="fas fa-check-circle"></i> Solved Exercises</h2>
+                    <div class="solutions-tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="class9">Class 9 Punjab Board</button>
+                            <button class="tab-btn" data-tab="class10">Class 10 Punjab Board</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="class9">
+                            <div class="chapters-list">
+                                <div class="chapter-item">
+                                    <h4>Chapter 1: Matrices and Determinants</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex1.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 2: Real and Complex Numbers</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex2.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 3: Logarithms</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex3.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 4: Algebraic Expressions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex4.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 5: Linear Equations and Inequalities </h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex5.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 5.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex5.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 5.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex5review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 6: Trigonometry</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex6.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.5.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.5 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.6.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.6 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 7: Coordinate Geometry</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex7.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 8: Logic</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex8review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 9: Similar Figures</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex9.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 10: Graphs of Functions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex10.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 10.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex10.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 10.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex10review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 11: Loci and Construction</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex11.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 11.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex11.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 11.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex11review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 12: Information Handing</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex12.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 12.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex12.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 12.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex12review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 4: Algebraic Expressions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex13.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 13.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex13.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 13.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex13review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="class10">
+                            <div class="chapters-list">
+                                <div class="chapter-item">
+                                    <h4>Chapter 1: Matrices and Determinants</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex1.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 1.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex1review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 2: Real and Complex Numbers</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex2.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 2.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex2review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 3: Logarithms</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex3.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 3.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex3review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="chapter-item">
+                                    <h4>Chapter 4: Algebraic Expressions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex4.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 4.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex4review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 5: Linear Equations and Inequalities </h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex5.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 5.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex5.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 5.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex5review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 6: Trigonometry</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex6.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.5.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.5 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6.6.pdf" target="_blank">
+                                         <button class="btn">Exercise 6.6 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex6review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 7: Coordinate Geometry</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex7.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 7.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex7review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 8: Logic</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex8review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 9: Similar Figures</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex9.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.3.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.3 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9.4.pdf" target="_blank">
+                                         <button class="btn">Exercise 9.4 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex9review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 10: Graphs of Functions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex10.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 10.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex10.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 10.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex10review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 11: Loci and Construction</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex11.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 11.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex11.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 11.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex11review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 12: Information Handing</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex12.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 12.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex12.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 12.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex12review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+
+                                <div class="chapter-item">
+                                    <h4>Chapter 4: Algebraic Expressions</h4>
+                                    <div>
+                                    <a href="matric/math9thpunjabboard/ex13.1.pdf" target="_blank">
+                                         <button class="btn">Exercise 13.1 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex13.2.pdf" target="_blank">
+                                         <button class="btn">Exercise 13.2 View </button>
+                                    </a>
+                                    <a href="matric/math9thpunjabboard/ex13review.pdf" target="_blank">
+                                         <button class="btn">Review Exercise</button>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Resources -->
+                <div class="matric-section">
+                    <h2><i class="fas fa-graduation-cap"></i> Additional Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Tests for Preparations</h3>
+                                <p>Important Tests and MCQs with answers for board exam preparation </p>
+                                <div>
+                                 <a href="test/test.html" target="_blank">
+                                    <button class="btn" >Open Lists</button>
+                                </a>
+                              </div> 
+                         </div>
+                        
+                         <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Past Papers</h3>
+                                <p>Solved past papers from previous years with detailed solutions</p>
+                                <div>
+                                 <a href="test/Pastpaper.html" target="_blank">
+                                    <button class="btn" >Coming Soon</button>
+                                </a>
+                              </div> 
+                         </div>
+                        
+                         <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>Formulas Sheet</h3>
+                                <p>All important formulas and theorems in one place for quick revision</p>
+                                <div>
+                                 <a href="test/formulasheets.html" target="_blank">
+                                    <button class="btn" >Coming Soon</button>
+                                </a>
+                              </div> 
+                         </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Viewer Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="pdfViewer" frameborder="0"></iframe>
+            <div class="modal-actions">
+                <a id="downloadBtn" class="btn" download>Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as other pages) -->
+    <footer>
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script src="js/matric.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

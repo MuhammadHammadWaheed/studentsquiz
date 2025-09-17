@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - Royal Mathematics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/teacher-edit.css">
+</head>
+<body>
+    <!-- Header (same as other pages) -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Royal <span>Mathematics</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="matric.html">Matric</a></li>
+                    <li><a href="fsc.html">Fsc</a></li>
+                    <li><a href="bs-math.html">BS Mathematics</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="mcqs.html" class="active">MCQs Practice</a></li>
+                    <li><a href="teacher-profile.html">Teacher Profiles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Teacher Edit Form -->
+    <section class="teacher-edit">
+        <div class="container">
+            <div class="edit-header">
+                <h2>Edit Teacher Profile</h2>
+                <div class="edit-actions">
+                    <a href="teacher-profile.html" class="btn">View Profile</a>
+                    <button type="submit" form="profileForm" class="btn">Save Changes</button>
+                </div>
+            </div>
+
+            <form id="profileForm" class="edit-form">
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-group profile-picture-upload">
+                        <label>Upload your Profile picture:</label>
+                        <div class="upload-area">
+                            <img id="profilePreview" src="images/teachers/hammad-waheed.jpg" alt="Current Profile">
+                            <input type="file" id="profileImage" accept="image/*">
+                            <label for="profileImage" class="btn">Choose Image</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" value="Muhammad Hammad Waheed" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fatherName">Father Name:</label>
+                            <input type="text" id="fatherName" value="Abdul Waheed" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contact">Contact number:</label>
+                            <input type="tel" id="contact" value="+923346272072" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" value="muhammadhammadwaheed@gmail.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="degree">Highest Degree:</label>
+                            <input type="text" id="degree" value="PhD" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialization">Specialization in Subject:</label>
+                            <input type="text" id="specialization" value="Mathematics" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Disruption Message:</label>
+                        <textarea id="message" rows="4">To secure the post of "lecturer" in your academy where I can implement my analytical and calculation skills in training and developing mathematical aptitude into the students, developing their genius to enhance the name and fame of the organization.</textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Languages</h3>
+                    <div class="languages-grid">
+                        <div class="language-item">
+                            <label>Urdu</label>
+                            <input type="range" min="0" max="100" value="100" class="percentage-slider">
+                            <span class="percentage-value">100%</span>
+                        </div>
+                        <div class="language-item">
+                            <label>English</label>
+                            <input type="range" min="0" max="100" value="90" class="percentage-slider">
+                            <span class="percentage-value">90%</span>
+                        </div>
+                        <div class="language-item">
+                            <label>Hindi</label>
+                            <input type="range" min="0" max="100" value="80" class="percentage-slider">
+                            <span class="percentage-value">80%</span>
+                        </div>
+                        <div class="language-item">
+                            <label>Punjabi</label>
+                            <input type="range" min="0" max="100" value="95" class="percentage-slider">
+                            <span class="percentage-value">95%</span>
+                        </div>
+                        <div class="language-item new-language">
+                            <input type="text" placeholder="Other language">
+                            <input type="range" min="0" max="100" value="0" class="percentage-slider">
+                            <span class="percentage-value">0%</span>
+                            <button type="button" class="btn add-btn">Add</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <label>Mathematica</label>
+                            <input type="range" min="0" max="100" value="95" class="percentage-slider">
+                            <span class="percentage-value">95%</span>
+                        </div>
+                        <div class="skill-item">
+                            <label>LaTeX</label>
+                            <input type="range" min="0" max="100" value="90" class="percentage-slider">
+                            <span class="percentage-value">90%</span>
+                        </div>
+                        <div class="skill-item">
+                            <label>MATLAB</label>
+                            <input type="range" min="0" max="100" value="85" class="percentage-slider">
+                            <span class="percentage-value">85%</span>
+                        </div>
+                        <div class="skill-item new-skill">
+                            <input type="text" placeholder="Other skill">
+                            <input type="range" min="0" max="100" value="0" class="percentage-slider">
+                            <span class="percentage-value">0%</span>
+                            <button type="button" class="btn add-btn">Add</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Notes</h3>
+                    <div class="notes-list" id="notesContainer">
+                        <div class="note-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <input type="text" value="Mathematics 1st year MCQs Notes">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description:</label>
+                                    <input type="text" value="This my Mathematics Notes for 1st year Students to help for preparation of MCQs paper etc.">
+                                </div>
+                            </div>
+                            <div class="form-group file-upload">
+                                <label>Upload file:</label>
+                                <input type="file">
+                            </div>
+                            <button type="button" class="btn remove-btn">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addNote" class="btn">Add Note</button>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Education</h3>
+                    <div class="education-list" id="educationContainer">
+                        <div class="education-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Degree Name:</label>
+                                    <input type="text" value="PhD">
+                                </div>
+                                <div class="form-group">
+                                    <label>Degree Year:</label>
+                                    <input type="text" value="2015-2019">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Subject:</label>
+                                    <input type="text" value="Mathematics">
+                                </div>
+                                <div class="form-group">
+                                    <label>Marks/CGPA:</label>
+                                    <input type="text" value="3.8/4.0">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>School/College:</label>
+                                    <input type="text" value="University of Punjab">
+                                </div>
+                                <div class="form-group">
+                                    <label>University:</label>
+                                    <input type="text" value="University of Punjab, Lahore">
+                                </div>
+                            </div>
+                            <button type="button" class="btn remove-btn">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addEducation" class="btn">Add Education</button>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Experience</h3>
+                    <div class="experience-list" id="experienceContainer">
+                        <div class="experience-item">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Designation:</label>
+                                    <input type="text" value="Lecturer in Mathematics">
+                                </div>
+                                <div class="form-group">
+                                    <label>Year:</label>
+                                    <input type="text" value="2019-Present">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>School/College/University:</label>
+                                <input type="text" value="University of Lahore">
+                            </div>
+                            <button type="button" class="btn remove-btn">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addExperience" class="btn">Add Experience</button>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Research Articles</h3>
+                    <div class="articles-list" id="articlesContainer">
+                        <div class="article-item">
+                            <div class="form-group">
+                                <label>Title:</label>
+                                <input type="text" value="Hybrid nanofluid flow within the conical gap between the cone and the">
+                            </div>
+                            <div class="form-group">
+                                <label>Authors:</label>
+                                <input type="text" value="Muhammad Hammad Waheed, Sarfraz ali">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Publication Date:</label>
+                                    <input type="text" value="2021 Jan 13">
+                                </div>
+                                <div class="form-group">
+                                    <label>Volume:</label>
+                                    <input type="text" value="11">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Issue Number:</label>
+                                    <input type="text" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Pages:</label>
+                                    <input type="text" value="1180">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>DOI:</label>
+                                <input type="text" value="https://doi.org/10.3390/universe7110428">
+                            </div>
+                            <button type="button" class="btn remove-btn">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" id="addArticle" class="btn">Add Article</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer (same as other pages) -->
+    <footer>
+        <div class="container">
+            <!-- Footer content same as index.html -->
+        </div>
+    </footer>
+
+    <script src="js/teacher-edit.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

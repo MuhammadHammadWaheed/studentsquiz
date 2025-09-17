@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Mathematics - Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/library.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>Royal <span>Mathematics</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="matric.html">Matric</a></li>
+                    <li><a href="fsc.html">Fsc</a></li>
+                    <li><a href="bs-math.html">BS Mathematics</a></li>
+                    <li><a href="library.html"  class="active">Library</a></li>
+                    <li><a href="mcqs.html">MCQs Practice</a></li>
+                    <li><a href="teacher-profile.html">Teacher Profiles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Library Section -->
+    <section class="library">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mathematics Library</h2>
+                <p>Browse and download our collection of mathematics resources</p>
+            </div>
+
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search resources...">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="textbook">textbook</option>
+                    <option value="notes">Lecture Notes</option>
+                    <option value="problems">Problem Sets</option>
+                    <option value="solutions">Solution Manuals</option>
+                </select>
+            </div>
+
+            <div class="resource-grid" id="resourceContainer">
+                <!-- Resources will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Viewer Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="pdfViewer" frameborder="0"></iframe>
+            <div class="modal-actions">
+                <a id="downloadBtn" class="btn" download>Download PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Footer content same as index.html -->
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Royal Mathematics. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/library.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

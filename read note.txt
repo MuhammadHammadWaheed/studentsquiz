@@ -1,0 +1,23 @@
+/matric/
+  ├── images/
+  │   └── matric/
+  │       ├── book-1.jpg
+  │       ├── book-2.jpg
+  │       └── matric-bg.jpg
+  └── pdfs/
+      └── matric/
+          ├── class-9-textbook.pdf
+          ├── class-10-textbook.pdf
+          ├── class-9/
+          │   ├── ch1-solutions.pdf
+          │   ├── ch2-solutions.pdf
+          │   ├── ch3-solutions.pdf
+          │   └── ch4-solutions.pdf
+          ├── class-10/
+          │   ├── ch1-solutions.pdf
+          │   ├── ch2-solutions.pdf
+          │   ├── ch3-solutions.pdf
+          │   └── ch4-solutions.pdf
+          ├── mcqs-collection.pdf
+          ├── past-papers.pdf
+          └── formulas-sheet.pdf
