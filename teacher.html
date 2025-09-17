@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <title>Teacher - Submissions</title>
+    <style>
+      body{font-family:Arial; padding:20px; background:#f7f7f7}
+      .card{max-width:900px;margin:auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+      input, button{padding:8px;margin:6px}
+      table{width:100%;border-collapse:collapse;margin-top:12px}
+      th,td{border:1px solid #ddd;padding:8px;text-align:left}
+      th{background:#f0f0f0}
+      .hint{color:#777;font-size:0.9rem}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Teacher — View Submissions</h2>
+      <p class="hint">Enter password to load submissions.</p>
+      <input id="pass" type="password" placeholder="Password">
+      <button onclick="load()">Load</button>
+      <button onclick="downloadCSV()">Download CSV</button>
+      <div id="tableArea"></div>
+      <p id="msg" class="hint"></p>
+    </div>
+
+    <script>
+      let cached = [];
+      function load(){
+        const p = document.getElementById('pass').value;
+        document.getElementById('msg').textContent = 'Loading...';
+        google.script.run.withSuccessHandler(function(res){
+          if(res.status === 'OK'){
+            cached = res.rows;
+            renderTable(res.rows);
+            document.getElementById('msg').textContent = 'Loaded ' + res.rows.length + ' rows.';
+          } else if(res.status === 'UNAUTHORIZED'){
+            document.getElementById('msg').textContent = 'Wrong password.';
+            document.getElementById('tableArea').innerHTML = '';
+          } else {
+            document.getElementById('msg').textContent = 'Error: ' + (res.message||'unknown');
+          }
+        }).getSubmissions(p);
+      }
+
+      function renderTable(rows){
+        if(!rows || rows.length===0){
+          document.getElementById('tableArea').innerHTML = '<p>No submissions yet.</p>';
+          return;
+        }
+        let html = '<table><tr><th>#</th><th>Timestamp</th><th>Name</th><th>Code</th><th>Message</th></tr>';
+        rows.forEach((r,i) => {
+          html += `<tr><td>${i+1}</td><td>${r.timestamp}</td><td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.code)}</td><td>${escapeHtml(r.msg)}</td></tr>`;
+        });
+        html += '</table>';
+        document.getElementById('tableArea').innerHTML = html;
+      }
+
+      function escapeHtml(s){ if(!s && s!==0) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+      function downloadCSV(){
+        if(!cached || cached.length===0){ alert('No data to download'); return; }
+        let csv = 'Timestamp,Name,Code,Message\n';
+        cached.forEach(r => {
+          // simple CSV escaping
+          const row = [r.timestamp, r.name, r.code, r.msg].map(x => `"${String(x).replace(/"/g,'""')}"`).join(',');
+          csv += row + '\n';
+        });
+        const blob = Utilities.newBlob ? null : null; // not used; use client-side download:
+        const url = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'submissions.csv'; document.body.appendChild(a); a.click(); a.remove();
+      }
+    </script>
+  </body>
+</html>
