@@ -1,56 +1,37 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <meta charset="utf-8">
-    <title>Quiz Submission</title>
-    <style>
-      body{font-family:Arial; padding:20px; background:#f7f7f7}
-      .card{max-width:500px;margin:auto;background:#fff;padding:18px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
-      input, textarea, button{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px}
-      button{background:teal;color:#fff;border:none;cursor:pointer}
-      .muted{font-size:0.85rem;color:#666}
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h2>Quiz Submission</h2>
-      <label>Student Name</label>
-      <input id="name" type="text">
-      <label>Quiz Code</label>
-      <input id="code" type="text">
-      <label>Message (optional)</label>
-      <textarea id="msg" rows="4"></textarea>
-      <button onclick="submitForm()">Submit</button>
-      <p id="status" class="muted"></p>
-      <hr>
-      <p class="muted">Teacher? <a href="?page=teacher" target="_blank">Open teacher page</a></p>
-    </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Student Messages</title>
+</head>
+<body>
+<h1>Submit Message</h1>
+<form id="studentForm">
+<input id="studentName" placeholder="Name" required>
+<textarea id="studentMessage" placeholder="Message" required></textarea>
+<button type="submit">Submit</button>
+</form>
 
-    <script>
-      function submitForm(){
-        const name = document.getElementById('name').value.trim();
-        const code = document.getElementById('code').value.trim();
-        const msg = document.getElementById('msg').value.trim();
-        const statusEl = document.getElementById('status');
 
-        if(!name || !code){
-          alert('Name and Code required');
-          return;
-        }
-        statusEl.textContent = 'Submitting...';
-        google.script.run.withSuccessHandler(function(res){
-          if(res.status === 'OK'){
-            statusEl.textContent = 'Submitted — thanks!';
-            document.getElementById('name').value = '';
-            document.getElementById('code').value = '';
-            document.getElementById('msg').value = '';
-          } else {
-            statusEl.textContent = 'Error: ' + (res.message || 'unknown');
-          }
-        }).submitData({name:name, code:code, msg:msg});
-      }
-    </script>
-  </body>
+<script>
+const API_BASE = 'http://localhost:3000';
+
+
+document.getElementById('studentForm').addEventListener('submit', async (e) => {
+e.preventDefault();
+const name = document.getElementById('studentName').value.trim();
+const msg = document.getElementById('studentMessage').value.trim();
+if(!name || !msg) return alert('Fill all fields');
+
+
+await fetch(API_BASE + '/api/messages', {
+method: 'POST',
+headers: {'Content-Type':'application/json'},
+body: JSON.stringify({name, msg, t: Date.now()})
+});
+alert('Message submitted!');
+e.target.reset();
+});
+</script>
+</body>
 </html>
-
